@@ -1,6 +1,7 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { StudentService } from './student.service';
 import { Student } from './student.entity';
+import { Get, Param } from '@nestjs/common';
 
 @Controller('student')
 export class StudentController {
@@ -9,5 +10,15 @@ export class StudentController {
     @Post()
     createStudent(@Body() studentData: Partial<Student>): Promise<Student> {
         return this.studentService.createStudent(studentData);
+    }
+
+    @Get()
+    findAllStudents(): Promise<Student[]> {
+        return this.studentService.findAllStudents();
+    }
+    
+    @Get(':id')
+    findStudentById(@Param('id') id: number): Promise<Student> {
+        return this.studentService.findStudentById(Number(id));
     }
 }
