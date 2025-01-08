@@ -9,7 +9,7 @@ import { Student } from './student/student.entity';
       type: 'mysql',
       host: 'localhost',
       port: 3306,
-      username: 'your-username',
+      username: 'root',
       password: '12345',
       database: 'assignment',
       entities: [Student],
